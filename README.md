@@ -29,5 +29,6 @@
 
 * Java 17
 * Maven
+* JUnit 5.9.0
 
 </div>
