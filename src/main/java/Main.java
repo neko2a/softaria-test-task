@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Hashtable<String, String> yesterdayTable = new Hashtable<>();
         Hashtable<String, String> todayTable = new Hashtable<>();
+        Message message = new Message();
 
         yesterdayTable.put("https://docs.oracle.com/javase/8/docs/api/java/util/Hashtable.html", "old_Hashtable.html");
         yesterdayTable.put("https://translate.google.com/", "old_translate");
@@ -13,10 +14,11 @@ public class Main {
         todayTable.put("https://translate.google.com/", "old_translate");
         todayTable.put("https://vk.com/", "new_vk");
 
-        Message message = new Message();
-        System.out.println(message.generateMessage(yesterdayTable, todayTable,
-                "Наталья Ивановна",
-                "автоматизированная система мониторинга"));
+        System.out.println(message.generateMessage("Наталья Ивановна", "автоматизированная система мониторинга",
+                TablesService.findDifferencesParallel(yesterdayTable, todayTable)));
+
+        System.out.println(message.generateMessage("Наталья Ивановна", "автоматизированная система мониторинга",
+                TablesService.findDifferences(yesterdayTable, todayTable)));
     }
 
 
